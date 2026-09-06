@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens — source of truth: design-system/leaders-academy/MASTER.md
+   Stored as RGB channels so Tailwind can apply opacity modifiers. */
+@layer base {
+  :root {
+    --background: 247 249 252;        /* #F7F9FC */
+    --foreground: 11 31 58;           /* #0B1F3A deep navy */
+    --primary: 11 45 91;              /* #0B2D5B brand navy (from logo) */
+    --primary-foreground: 255 255 255;
+    --secondary: 23 92 139;           /* #175C8B brand blue (from logo) */
+    --secondary-foreground: 255 255 255;
+    --accent: 200 162 74;             /* #C8A24A brand gold (from logo) */
+    --accent-foreground: 11 31 58;
+    --card: 255 255 255;
+    --card-foreground: 11 31 58;
+    --muted: 237 241 247;             /* #EDF1F7 */
+    --muted-foreground: 75 90 110;    /* #4B5A6E */
+    --border: 217 225 236;            /* #D9E1EC */
+    --ring: 23 92 139;
+    --cta: 198 40 40;                 /* #C62828 red call-to-action (from theme mockup) */
+    --cta-foreground: 255 255 255;
+    --whatsapp: 37 211 102;           /* #25D366 */
+    --whatsapp-foreground: 6 46 24;
+    --destructive: 185 28 28;
+    --destructive-foreground: 255 255 255;
+  }
+
+  .dark {
+    --background: 11 31 58;           /* #0B1F3A */
+    --foreground: 238 242 247;
+    --primary: 238 242 247;           /* inverted: light buttons on navy */
+    --primary-foreground: 11 31 58;
+    --secondary: 127 182 232;         /* #7FB6E8 */
+    --secondary-foreground: 11 31 58;
+    --accent: 212 177 95;             /* #D4B15F gold, 8:1+ on navy */
+    --accent-foreground: 11 31 58;
+    --card: 18 41 74;                 /* #12294A */
+    --card-foreground: 238 242 247;
+    --muted: 26 51 87;
+    --muted-foreground: 167 180 198;  /* #A7B4C6 */
+    --border: 39 66 102;              /* #274266 */
+    --ring: 212 177 95;
+    --cta: 211 47 47;                 /* #D32F2F, 5:1 with white text */
+    --cta-foreground: 255 255 255;
+    --whatsapp: 37 211 102;
+    --whatsapp-foreground: 6 46 24;
+    --destructive: 252 165 165;
+    --destructive-foreground: 11 31 58;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "kern", "liga";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold text-balance;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  /* Visible focus for keyboard users, never removed */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    @apply bg-accent/20;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .rule {
+    @apply border-t border-border;
+  }
+}
